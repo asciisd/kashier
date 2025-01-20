@@ -1,0 +1,48 @@
+# Composer dependencies
+/vendor/
+
+# Node.js dependencies
+/node_modules/
+
+# Laravel config cache
+/config/*.php
+
+# Laravel environment variables
+.env
+.env.backup
+
+# IDE and editor files
+.idea/
+*.swp
+*.swo
+*.sublime-workspace
+*.sublime-project
+.vscode/
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# Logs and temp files
+*.log
+*.cache
+*.temp
+
+# Git metadata
+*.lock
+*.bak
+
+# PHPUnit
+/phpunit.xml
+/phpunit.xml.dist
+/tests/_output/
+tests/_support/_generated/
+tests/_data/*
+
+# Coverage results
+coverage/
+.coverage/
+.phpunit.result.cache
+
+# Custom files
+# Add any specific files or folders you want to exclude
