@@ -16,10 +16,14 @@ class VerifyResponseSignature
      */
     public function handle(Request $request, Closure $next): mixed
     {
+        if ($request->input('paymentStatus') === 'CANCELLED') {
+            return $next($request);
+        }
+
         $queryString = "";
         $secret = config('kashier.apikey');
 
-        foreach ($request->json()->all() as $key => $value) {
+        foreach ($request->all() as $key => $value) {
             if ($key === "signature" || $key === "mode") {
                 continue;
             }

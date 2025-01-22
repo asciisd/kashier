@@ -253,7 +253,7 @@
                                                                                 <td align="right"
                                                                                     style="border: none; margin: 0; padding: 0;">
                                                                                     <span
-                                                                                        class="success-status"
+                                                                                        class="{{$order['statusStyle']}}"
                                                                                         style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Ubuntu, sans-serif;">
                                                                                         {{ $order['paymentStatus'] }}
                                                                                     </span>
