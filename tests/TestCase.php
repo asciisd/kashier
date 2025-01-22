@@ -16,8 +16,8 @@ abstract class TestCase extends BaseTestCase
 
     protected function getEnvironmentSetUp($app): void
     {
-        $app['config']->set('kashier.merchant_id', 'test-merchant-id');
-        $app['config']->set('kashier.api_key', 'test-api-key');
-        $app['config']->set('kashier.mode', 'test');
+        $app['config']->set('kashier.mid', env('KASHIER_MERCHANT_ID'));
+        $app['config']->set('kashier.apikey', env('KASHIER_API_KEY'));
+        $app['config']->set('kashier.mode', env('KASHIER_MODE'));
     }
 }

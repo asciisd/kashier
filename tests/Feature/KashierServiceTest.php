@@ -8,15 +8,16 @@ it('can process a payment', function () {
     expect($response)->toBe('Processing Kashier payment!');
 });
 
-it('can generate a payment URL', function () {
-    $order = [
-        'orderId' => '12345',
-        'amount' => '100.00',
-        'currency' => 'EGP',
-        'customerReference' => 'customer-001',
-    ];
+it('has the testing environment set', function () {
+    expect(config('kashier.mode'))->toBe('test');
+});
 
-    $url = Kashier::buildPaymentUrl($order);
+it('has the testing mid set', function () {
+    expect(config('kashier.mid'))->toBe('MID-3552-454');
+});
+
+it('can generate a payment URL', function () {
+    $url = Kashier::buildPaymentUrl(100, '12345', 'EGP', 'customer-001');
 
     expect($url)->toContain('checkout.kashier.io');
 });

@@ -24,7 +24,8 @@
   },
   "require": {
     "php": "^8.2",
-    "illuminate/support": "*"
+    "illuminate/support": "*",
+    "ext-curl": "*"
   },
   "require-dev": {
     "pestphp/pest": "^2.36",
