@@ -19,7 +19,7 @@ class VerifyResponseSignature
         $queryString = "";
         $secret = config('kashier.apikey');
 
-        foreach ($request->all() as $key => $value) {
+        foreach ($request->json()->all() as $key => $value) {
             if ($key === "signature" || $key === "mode") {
                 continue;
             }

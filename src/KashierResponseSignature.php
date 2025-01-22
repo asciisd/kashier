@@ -8,7 +8,10 @@ class KashierResponseSignature
 {
     public static function verifyHeader(): bool
     {
-        $data_obj = request()->input('data');
+        $payload = request()->json()->all();
+
+        $data_obj = $payload['data'];
+
         sort($data_obj['signatureKeys']);
         $headers = request()->headers->all();
 

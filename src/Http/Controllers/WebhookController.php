@@ -11,15 +11,15 @@ class WebhookController extends Controller
 {
     public function __construct()
     {
-        //        $this->middleware(VerifyWebhookSignature::class);
+        $this->middleware(VerifyWebhookSignature::class);
     }
 
     public function handle(Request $request)
     {
-        logger()->info('Webhook received', $request->all());
+        logger()->info('Webhook received', $request->json()->all());
 
         // Handle the incoming webhook
-        KashierWebhookHandled::dispatch($request->all());
+        KashierWebhookHandled::dispatch($request->json()->all());
     }
 
     public function error(Request $request)

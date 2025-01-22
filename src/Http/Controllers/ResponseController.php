@@ -16,10 +16,10 @@ class ResponseController extends Controller
 
     public function __invoke(Request $request)
     {
-        KashierResponseHandled::dispatch($request->all());
+        KashierResponseHandled::dispatch($request->json()->all());
 
         return view('kashier::receipt', [
-            'order' => $request->all()
+            'order' => $request->json()->all()
         ]);
     }
 }
