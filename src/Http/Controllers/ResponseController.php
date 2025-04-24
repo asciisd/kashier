@@ -36,6 +36,17 @@ class ResponseController extends Controller
             $payload['cardBrand'] = 'Card';
         }
 
+        // Determine service type from metadata or config
+        if (!isset($payload['serviceType'])) {
+            // Try to get from metadata if available
+            if (isset($payload['metaData']) && isset($payload['metaData']['serviceType'])) {
+                $payload['serviceType'] = $payload['metaData']['serviceType'];
+            } else {
+                // Default to config value or "Buy Course"
+                $payload['serviceType'] = config('kashier.service_type', 'Buy Course');
+            }
+        }
+
         $statusStyle = OrderStatus::tryFrom($payload['paymentStatus'])?->styleColor();
         $payload['statusStyle'] = $statusStyle;
 

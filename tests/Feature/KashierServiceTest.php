@@ -17,7 +17,22 @@ it('has the testing mid set', function () {
 });
 
 it('can generate a payment URL', function () {
-    $url = Kashier::buildPaymentUrl(100, '12345', 'EGP', 'customer-001');
+    // Ensure currency is set in the configuration
+    config(['kashier.currency' => 'EGP']);
+    
+    // Mock the URL facade for the test
+    \Illuminate\Support\Facades\URL::shouldReceive('to')
+        ->with('/kashier/response', true)
+        ->andReturn('https://example.com/kashier/response');
+        
+    \Illuminate\Support\Facades\URL::shouldReceive('to')
+        ->with('/kashier/webhook', true)
+        ->andReturn('https://example.com/kashier/webhook');
+    
+    // Update to use array for attributes instead of individual parameters
+    $url = Kashier::buildPaymentUrl(100, '12345', [
+        'customerReference' => 'customer-001'
+    ]);
 
     expect($url)->toContain('checkout.kashier.io');
 });

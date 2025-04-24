@@ -474,7 +474,7 @@
                                                                                             <td style="border: 0; margin: 0; padding: 0; width: 100%;">
                                                                                                 <span
                                                                                                     style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Ubuntu, sans-serif; text-decoration: none; color: #1A1A1A; font-size: 14px; line-height: 16px; font-weight: 500; word-break: break-word;">
-                                                                                                    {{ __("Buy Course") }}
+                                                                                                    {{ __($order['serviceType'] ?? "Buy Course") }}
                                                                                                 </span>
                                                                                             </td>
                                                                                         </tr>
