@@ -43,6 +43,7 @@ KASHIER_API_KEY=your-api-key
 KASHIER_SECRET_KEY=your-secret-key
 KASHIER_MODE=test # or live
 KASHIER_CURRENCY=EGP # or any other supported currency
+KASHIER_CALLBACK_URL=https://your-website.com/payment-complete # optional custom redirect URL
 ```
 
 ## Usage
@@ -95,6 +96,16 @@ Event::listen(function (KashierResponseHandled $event) {
     // ...
 });
 ```
+
+#### Custom Redirect After Payment
+
+By default, users are shown a receipt page after completing payment. If you prefer to redirect users to your own custom page, you can set the `KASHIER_CALLBACK_URL` in your `.env` file:
+
+```
+KASHIER_CALLBACK_URL=https://your-website.com/payment-complete
+```
+
+When this is configured, users will be redirected to your custom URL after payment processing, with all payment data included as query parameters. This allows you to create a completely custom post-payment experience.
 
 ### Handling Webhooks
 

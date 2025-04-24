@@ -50,6 +50,15 @@ class ResponseController extends Controller
         $statusStyle = OrderStatus::tryFrom($payload['paymentStatus'])?->styleColor();
         $payload['statusStyle'] = $statusStyle;
 
+        // Check if a callback URL is configured
+        $callbackUrl = config('kashier.callbackUrl');
+
+        // If a callback URL is set, redirect to it with the payload as query parameters
+        if ($callbackUrl) {
+            return redirect($callbackUrl . '?' . http_build_query($payload));
+        }
+
+        // Otherwise, show the receipt view
         return view('kashier::receipt', [
             'order' => $payload
         ]);
